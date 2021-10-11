@@ -5,7 +5,7 @@
 
 Probably works also with ethminer and its forks provided the RPC api is not changed.
 
-Both the source code and the UI are ugly but it might just work but beware : error handling is practically inexistent.
+Both the source code and the UI are ugly, it might just work but beware : error handling is practically inexistent.
 ## Features
  - Manage from system tray
  - Execute custom script before Pause/Start mining, samples AHK scripts to change MSI afterburner profiles
