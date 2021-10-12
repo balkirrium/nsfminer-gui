@@ -199,16 +199,18 @@ public class MainWindow {
 		for (DeviceTab dTab : toRemove)
 			dTab.unDraw();
 		systrayHandler.popupAddMainMenu();
-		if (iostat != null && logArea != null) {
+//		if (iostat != null && logArea != null) {
 //			int len;
 //			try {
 //				len = iostat.getInputStream().available();
+//				if (logArea.getCaretPosition() > 99999)
+//					logArea.setText("");
 //				if (len > 0)
 //					logArea.append(new String(iostat.getInputStream().readNBytes(len)));
 //			} catch (IOException e) {
 //				log.error("Error parsing nsfminer process logs", e);
 //			}
-		}
+//		}
 
 	}
 
@@ -219,7 +221,7 @@ public class MainWindow {
 		cmd.add(PropService.getPropService().getString(PropService.SERVER_EXE));
 		cmd.addAll(Arrays.asList(PropService.getPropService().getString(PropService.SERVER_PARAMS).split(" ")));
 		try {
-			iostat = new ProcessBuilder().command(cmd).start();
+			iostat = new ProcessBuilder().command(cmd).inheritIO().start();
 		} catch (IOException e) {
 			log.error("process server=" + String.join(" ", cmd), e);
 			log.error("error creating process for server", e);
