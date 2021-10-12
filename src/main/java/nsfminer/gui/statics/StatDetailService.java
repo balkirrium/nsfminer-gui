@@ -19,7 +19,8 @@ public class StatDetailService {
 		} catch (Throwable e) {
 			log.error("Error loading statDetails");
 		}
-		return statDetailSingleton2;
+		statDetailSingleton = statDetailSingleton2;
+		return statDetailSingleton;
 	}
 
 	public StatDetail refresh() {
