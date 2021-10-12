@@ -36,16 +36,20 @@ public class RPCService {
 					Integer.parseInt(PropService.getPropService().getString(PropService.CLIENT_PORT)));
 		} catch (NumberFormatException e) {
 			log.error("Error parsing client port property", e);
+			return null;
 		} catch (UnknownHostException e) {
 			log.error("Client host unknown", e);
+			return null;
 		} catch (IOException e) {
 			log.error("IO error setting up RPCService socket", e);
+			return null;
 		}
 		try {
 			rpcService2.outputStr = rpcService2.socket.getOutputStream();
 			rpcService2.inputStr = rpcService2.socket.getInputStream();
 		} catch (IOException e) {
 			log.error("IO error setting up RPCService socket IOstreams", e);
+			return null;
 		}
 		rpcService2.client = new JsonRpcClient();
 		rpcService = rpcService2;
